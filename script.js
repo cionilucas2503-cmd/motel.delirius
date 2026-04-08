@@ -53,6 +53,53 @@ window.addEventListener("scroll", handleScrollAnimation);
 handleScrollAnimation();
 
 // ============================================
+// GALLERY LIGHTBOX
+// ============================================
+const lightbox = document.getElementById('galleryLightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const galleryItems = document.querySelectorAll('.gallery-item img');
+let lightboxIndex = 0;
+const gallerySrcs = Array.from(galleryItems).map(img => img.src);
+
+galleryItems.forEach((img, i) => {
+    img.addEventListener('click', () => {
+        lightboxIndex = i;
+        lightboxImg.src = gallerySrcs[lightboxIndex];
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    lightboxIndex = (lightboxIndex - 1 + gallerySrcs.length) % gallerySrcs.length;
+    lightboxImg.src = gallerySrcs[lightboxIndex];
+});
+
+document.querySelector('.lightbox-next').addEventListener('click', (e) => {
+    e.stopPropagation();
+    lightboxIndex = (lightboxIndex + 1) % gallerySrcs.length;
+    lightboxImg.src = gallerySrcs[lightboxIndex];
+});
+
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { lightboxIndex = (lightboxIndex - 1 + gallerySrcs.length) % gallerySrcs.length; lightboxImg.src = gallerySrcs[lightboxIndex]; }
+    if (e.key === 'ArrowRight') { lightboxIndex = (lightboxIndex + 1) % gallerySrcs.length; lightboxImg.src = gallerySrcs[lightboxIndex]; }
+});
+
+// ============================================
 // SUITE MODAL & CAROUSEL
 // ============================================
 const suitesData = {
@@ -92,8 +139,8 @@ const suitesData = {
         images: ['Suite-5-1.png', 'Suite-5-2.png', 'Suite-5-3.png']
     },
     6: {
-        name: 'Suíte Dragão',
-        desc: 'Uma experiência oriental única. Cama redonda com capitonê, teto espelhado circular e iluminação vermelha dramática. A Suíte Dragão é pura ousadia e exclusividade.',
+        name: 'Suíte Oriental',
+        desc: 'Uma experiência oriental única. Cama redonda com capitonê, teto espelhado circular e iluminação vermelha dramática. A Suíte Oriental é pura ousadia e exclusividade.',
         price: 'A partir de R$ 220,00',
         details: ['Cama Redonda', 'Teto Espelhado', 'Decoração Oriental', 'Iluminação Vermelha', 'Frigobar', 'Ar Condicionado'],
         images: ['Suite-6-1.png', 'Suite-6-2.png', 'Suite-6-3.png', 'Suite-6-4.png', 'Suite-6-5.png']
@@ -142,6 +189,10 @@ document.querySelectorAll('.suite-card').forEach(card => {
             dot.addEventListener('click', () => goToSlide(i));
             dotsContainer.appendChild(dot);
         }
+
+        // Update WhatsApp link with custom message
+        const whatsMsg = encodeURIComponent('Olá! Vim através do site e gostaria de reservar a *' + suite.name + '* (' + suite.price + '). Podem me passar as datas e horários disponíveis? Obrigado(a)!');
+        document.querySelector('.modal-btn').href = 'https://wa.me/5511995942262?text=' + whatsMsg;
 
         updateCarousel();
         modal.classList.add('active');
