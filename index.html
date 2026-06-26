@@ -7,7 +7,7 @@
     <title>Motel Delirios | Paixão e Luxo em Cada Detalhe</title>
     <meta name="description"
         content="Descubra o Motel Delirios, onde o luxo encontra a privacidade. Suítes exclusivas para momentos inesquecíveis em São Paulo.">
-    <link rel="stylesheet" href="style.css?v=23">
+    <link rel="stylesheet" href="style.css?v=24">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -304,6 +304,12 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Música de Fundo -->
+    <audio id="bgMusic" loop preload="auto" src="assets/musica.mp3"></audio>
+    <button class="music-toggle" id="musicToggle" aria-label="Ligar ou desligar música">
+        <i class="fas fa-volume-mute"></i>
+    </button>
+
     <!-- Lightbox Galeria -->
     <div class="lightbox" id="galleryLightbox">
         <button class="lightbox-close">&times;</button>
@@ -332,7 +338,7 @@
         </div>
     </div>
 
-    <script src="script.js?v=18"></script>
+    <script src="script.js?v=19"></script>
     <script>
         // Red sparkles effect
         const hero = document.getElementById('hero');

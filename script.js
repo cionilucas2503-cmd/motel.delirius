@@ -297,3 +297,50 @@ modal.addEventListener('touchend', (e) => {
         updateCarousel();
     }
 });
+
+// ============================================
+// MÚSICA DE FUNDO
+// ============================================
+(function () {
+    const audio = document.getElementById('bgMusic');
+    const btn = document.getElementById('musicToggle');
+    if (!audio || !btn) return;
+
+    audio.volume = 0.35;
+    let started = false;
+
+    function setIcon(playing) {
+        btn.classList.toggle('playing', playing);
+        btn.innerHTML = playing
+            ? '<i class="fas fa-volume-up"></i>'
+            : '<i class="fas fa-volume-mute"></i>';
+    }
+
+    function autoStart() {
+        if (started) return;
+        audio.play().then(() => {
+            started = true;
+            setIcon(true);
+            ['click', 'touchstart', 'scroll', 'keydown'].forEach(ev =>
+                window.removeEventListener(ev, autoStart));
+        }).catch(() => { /* navegador bloqueou: aguarda próxima interação */ });
+    }
+
+    // Tenta tocar já (alguns navegadores permitem); senão inicia na 1ª interação do usuário
+    autoStart();
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(ev =>
+        window.addEventListener(ev, autoStart, { passive: true }));
+
+    // Botão liga/desliga manual
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (audio.paused) {
+            audio.play();
+            started = true;
+            setIcon(true);
+        } else {
+            audio.pause();
+            setIcon(false);
+        }
+    });
+})();
