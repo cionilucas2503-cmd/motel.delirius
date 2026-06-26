@@ -104,53 +104,80 @@ document.addEventListener('keydown', (e) => {
 // ============================================
 const suitesData = {
     1: {
-        name: 'Suíte Sedução',
-        desc: 'Deixe-se envolver pela atmosfera sensual da Suíte Sedução. Tons de roxo profundo, painel artístico exclusivo e iluminação LED criam o cenário perfeito para uma noite inesquecível.',
-        price: 'A partir de R$ 250,00',
-        details: ['Iluminação LED', 'Painel Artístico', 'Sofá Roxo', 'Espelho no Teto', 'Frigobar', 'Ar Condicionado'],
-        images: ['Suite-1.png', 'Suite-1-1.png', 'Suite-1-2.png', 'Suite-1-3.png', 'Suite-1-4.png']
+        name: 'Suíte Paixão',
+        desc: 'Suíte simples e aconchegante, perfeita para um encontro a dois cheio de intimidade. Ambiente confortável com tudo que você precisa para momentos especiais.',
+        price: 'A partir de R$ 40,00',
+        details: ['Suíte Simples', 'Sem Hidromassagem', 'TV', 'Frigobar', 'Ar Condicionado'],
+        pricing: {
+            weekday: [
+                { time: '1 hora', value: '40,00' },
+                { time: '2 horas', value: '55,00' },
+                { time: '4 horas', value: '70,00' },
+                { time: '12 horas (pernoite)', value: '85,00' }
+            ],
+            weekend: [
+                { time: '1 hora', value: '40,00' },
+                { time: '2 horas', value: '60,00' },
+                { time: '4 horas', value: '75,00' },
+                { time: '12 horas (pernoite)', value: '90,00' }
+            ]
+        },
+        images: ['Suite-7-1.png', 'Suite-7-2.png', 'Suite-7-3.png', 'Suite-7-4.png', 'Suite-7-5.png']
     },
     2: {
-        name: 'Suíte Paixão',
-        desc: 'A intensidade do vermelho toma conta de cada detalhe. Com espelho no teto, poltrona exclusiva e iluminação cênica, a Suíte Paixão é para quem quer viver momentos ardentes.',
-        price: 'A partir de R$ 200,00',
-        details: ['Espelho no Teto', 'Poltrona Exclusiva', 'Iluminação Vermelha', 'Frigobar', 'Ar Condicionado'],
-        images: ['Suite-2-1.png', 'Suite-2-2.png', 'Suite-2-3.png', 'Suite-2-4.png', 'Suite-2-5.png']
+        name: 'Suíte Delírios',
+        desc: 'Suíte com hidromassagem em formato de coração para momentos relaxantes e sensuais. Conforto e charme para tornar sua estadia inesquecível.',
+        price: 'A partir de R$ 80,00',
+        details: ['Hidro Coração', 'Hidromassagem', 'TV', 'Frigobar', 'Ar Condicionado'],
+        pricing: {
+            weekday: [
+                { time: '2 horas', value: '80,00' },
+                { time: '4 horas', value: '100,00' },
+                { time: '12 horas (pernoite)', value: '120,00' }
+            ],
+            weekend: [
+                { time: '2 horas', value: '100,00' },
+                { time: '4 horas', value: '110,00' },
+                { time: '12 horas (pernoite)', value: '130,00' }
+            ]
+        },
+        images: ['Suite-1.png', 'Suite-1-1.png', 'Suite-1-2.png', 'Suite-1-3.png', 'Suite-1-4.png']
     },
     3: {
-        name: 'Suíte Desejo',
-        desc: 'Design contemporâneo com parede marsala e iluminação LED geométrica. A Suíte Desejo combina elegância e conforto para quem busca uma experiência moderna e aconchegante.',
-        price: 'A partir de R$ 180,00',
-        details: ['Design Moderno', 'LED Geométrico', 'Parede Marsala', 'Mesa Refeição', 'Frigobar', 'Ar Condicionado'],
-        images: ['Suite-3-1.png', 'Suite-3-2.png', 'Suite-3-3.png', 'Suite-3-4.png']
-    },
-    4: {
-        name: 'Suíte Fascínio',
-        desc: 'Iluminação neon roxa que pulsa no ambiente, TV de tela grande e poltrona tântrica. A Suíte Fascínio é o espaço ideal para quem quer se entregar ao prazer com estilo.',
-        price: 'A partir de R$ 280,00',
-        details: ['Neon Roxo', 'TV Tela Grande', 'Poltrona Tântrica', 'Mesa Bistro', 'Frigobar', 'Ar Condicionado'],
-        images: ['Suite-4-1.png', 'Suite-4-2.png', 'Suite-4-3.png']
-    },
-    5: {
-        name: 'Suíte Elegance',
-        desc: 'Sofisticação em cada detalhe. Decoração em preto e dourado, escultura artística na parede e espelho geométrico no teto. A Suíte Elegance é a escolha de quem tem bom gosto.',
-        price: 'A partir de R$ 300,00',
-        details: ['Decoração Premium', 'Escultura Artística', 'Espelho Geométrico', 'Abajures', 'Frigobar', 'Ar Condicionado'],
-        images: ['Suite-5-1.png', 'Suite-5-2.png', 'Suite-5-3.png']
-    },
-    6: {
-        name: 'Suíte Oriental',
-        desc: 'Uma experiência oriental única. Cama redonda com capitonê, teto espelhado circular e iluminação vermelha dramática. A Suíte Oriental é pura ousadia e exclusividade.',
-        price: 'A partir de R$ 220,00',
-        details: ['Cama Redonda', 'Teto Espelhado', 'Decoração Oriental', 'Iluminação Vermelha', 'Frigobar', 'Ar Condicionado'],
+        name: 'Suíte Amor',
+        desc: 'Suíte predinho com hidromassagem, ampla e confortável para uma estadia inesquecível. Espaço privativo com toda a estrutura para o seu conforto.',
+        price: 'A partir de R$ 80,00',
+        details: ['Predinho', 'Hidromassagem', 'TV', 'Frigobar', 'Ar Condicionado'],
+        pricing: {
+            weekday: [
+                { time: '2 horas', value: '80,00' },
+                { time: '4 horas', value: '90,00' },
+                { time: '12 horas (pernoite)', value: '100,00' }
+            ],
+            weekend: [
+                { time: '2 horas', value: '90,00' },
+                { time: '4 horas', value: '100,00' },
+                { time: '12 horas (pernoite)', value: '110,00' }
+            ]
+        },
         images: ['Suite-6-1.png', 'Suite-6-2.png', 'Suite-6-3.png', 'Suite-6-4.png', 'Suite-6-5.png']
     },
-    7: {
-        name: 'Suíte Oceano',
-        desc: 'Relaxe no azul sereno da Suíte Oceano. Com vista para o verde da natureza, teto espelhado e decoração em tons de azul e madeira, é o refúgio perfeito para momentos tranquilos.',
-        price: 'A partir de R$ 150,00',
-        details: ['Tema Oceano', 'Teto Espelhado', 'Vista Verde', 'Cama King', 'Frigobar', 'Ar Condicionado'],
-        images: ['Suite-7-1.png', 'Suite-7-2.png', 'Suite-7-3.png', 'Suite-7-4.png', 'Suite-7-5.png']
+    4: {
+        name: 'Suíte Erótica',
+        desc: 'Nossa suíte mais ousada, com pole dance (X) e hidromassagem em formato de coração para apimentar a noite. A escolha perfeita para quem busca emoção e prazer.',
+        price: 'A partir de R$ 120,00',
+        details: ['Pole Dance (X)', 'Hidro Coração', 'Hidromassagem', 'TV', 'Frigobar', 'Ar Condicionado'],
+        pricing: {
+            weekday: [
+                { time: '4 horas', value: '120,00' },
+                { time: '12 horas (pernoite)', value: '160,00' }
+            ],
+            weekend: [
+                { time: '4 horas', value: '130,00' },
+                { time: '12 horas (pernoite)', value: '170,00' }
+            ]
+        },
+        images: ['Suite-2-1.png', 'Suite-2-2.png', 'Suite-2-3.png', 'Suite-2-4.png', 'Suite-2-5.png']
     }
 };
 
@@ -170,7 +197,21 @@ document.querySelectorAll('.suite-card').forEach(card => {
 
         document.getElementById('modalTitle').textContent = suite.name;
         document.getElementById('modalDesc').textContent = suite.desc;
-        document.getElementById('modalPrice').textContent = suite.price;
+
+        const buildRows = (rows) => rows.map(r =>
+            '<li><span class="pt-time">' + r.time + '</span><span class="pt-value">R$ ' + r.value + '</span></li>'
+        ).join('');
+        document.getElementById('modalPrice').innerHTML =
+            '<div class="price-tables">' +
+                '<div class="price-table">' +
+                    '<h4>Segunda a Quinta</h4>' +
+                    '<ul>' + buildRows(suite.pricing.weekday) + '</ul>' +
+                '</div>' +
+                '<div class="price-table price-table--weekend">' +
+                    '<h4>Sexta a Domingo</h4>' +
+                    '<ul>' + buildRows(suite.pricing.weekend) + '</ul>' +
+                '</div>' +
+            '</div>';
 
         const detailsEl = document.getElementById('modalDetails');
         detailsEl.innerHTML = suite.details.map(d => '<span class="modal-detail-item">' + d + '</span>').join('');
